@@ -1042,9 +1042,20 @@ nav {
   gap: 12px;
 }
 
+@keyframes spring-modal-center {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 /* Meal builder Score Card Popup */
 .score-modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1052,10 +1063,11 @@ nav {
   max-width: 480px;
   z-index: 100;
   pointer-events: auto;
-  max-height: 85%;
+  max-height: 85vh;
   overflow-y: auto;
   border-top: 10px solid var(--primary-accent);
-  animation: spring-scale-up 0.5s var(--transition-bounce) forwards;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.25), 0 0 0 100vmax rgba(15, 23, 42, 0.35);
+  animation: spring-modal-center 0.5s var(--transition-bounce) forwards;
 }
 
 .score-modal-header {
