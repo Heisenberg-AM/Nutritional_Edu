@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 
+// https://vite.dev/config/
 export default defineConfig({
-  base: './', // Use relative base path so assets work on GitHub Pages subdirectories
+  base: '/Nutritional_Edu/',
 });
