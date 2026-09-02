@@ -5,7 +5,7 @@ An interactive, responsive 3D educational web application designed for 8th-grade
 Built from scratch using **Vite** and **Three.js** (vanilla JavaScript) without any heavy frameworks, external asset dependencies, or audio files (sound is synthesized dynamically via Web Audio API).
 
 ## Key Features
-1. **Interactive 3D Food Library**: Explore 9 low-poly, glossy procedural food models (Red Apple, Kerala Nendran Banana, Orange Carrot, Palak/Leafy Greens, Whole Wheat Roti, Boiled Egg, Fresh Paneer, Kerala Fish/Karimeen, Curd/Buttermilk) arranged around a central 50–25–25 plate. Hovering/clicking a food item triggers a detailed nutrition card with educational fun facts.
+1. **Interactive 3D Food Library**: Explore 9 low-poly, glossy procedural food models (Red Apple, Banana, Orange Carrot, Palak/Leafy Greens, Whole Wheat Roti, Boiled Egg, Fresh Paneer, Fish, Curd/Buttermilk) arranged around a central 50–25–25 plate. Hovering/clicking a food item triggers a detailed nutrition card with educational fun facts.
 2. **Nutrition Quiz**: An interactive 10-question multiple-choice quiz covering the 50–25–25 plate framework, macronutrients, Indian nutritional science, hydration, and sugar limits with real-time feedback and confetti animations.
 3. **50–25–25 Meal Builder**: A 3D playground where students select and place foods on their plate in real-time. Displays visual feedback gauges tracking the 50% Fruits/Vegetables target, 25% Carbohydrates target, 25% Protein target, and energy balance.
 4. **Virtual Nutritionist Review**: Students can submit their 3D meal for grading against the 50–25–25 model, receiving an A+ to D grade with constructive feedback.

@@ -26,7 +26,7 @@ export const foodItems = {
   },
   banana: {
     id: 'banana',
-    name: 'Kerala Banana (Nendran)',
+    name: 'Banana',
     group: 'fruit',
     plateSection: '50% Fruits & Vegetables',
     color: '#ffd60a',
@@ -42,7 +42,7 @@ export const foodItems = {
       sodium: '1mg'
     },
     funFacts: [
-      'Kerala Nendran bananas are prized for high prebiotic fiber and essential minerals!',
+      'Bananas are prized for high prebiotic fiber and essential minerals!',
       'Potassium in bananas helps regulate blood pressure, prevents muscle cramps, and supports heart rhythm.',
       'Bananas contain Vitamin B6, which helps your body produce serotonin for better focus and mood.'
     ]
@@ -164,11 +164,11 @@ export const foodItems = {
   },
   fish: {
     id: 'fish',
-    name: 'Kerala Fish (Karimeen)',
+    name: 'Fish',
     group: 'protein',
     plateSection: '25% Protein',
     color: '#0284c7',
-    tagline: 'Lean coastal protein packed with brain-boosting Omega-3s!',
+    tagline: 'Lean protein packed with brain-boosting Omega-3s!',
     nutrients: {
       calories: 140,
       carbs: '0g',
@@ -180,7 +180,7 @@ export const foodItems = {
       sodium: '70mg'
     },
     funFacts: [
-      'Coastal fish like Karimeen, Sardines (Mathi), and Mackerel (Ayala) are loaded with natural Omega-3 fatty acids.',
+      'Fish like Sardines, Mackerel, and Salmon are loaded with natural Omega-3 fatty acids.',
       'Omega-3s form the structural lipids of brain cell membranes, enhancing concentration and cognitive speed.',
       'Fish is naturally low in saturated fats and provides bioavailable Vitamin D for bone and immune health.'
     ]
@@ -273,7 +273,7 @@ export const quizQuestions = [
   },
   {
     id: 6,
-    question: 'Which healthy fat found in Kerala coastal fish like Karimeen and Sardines is critical for brain function and memory?',
+    question: 'Which healthy fat found in fish like Sardines and Mackerel is critical for brain function and memory?',
     options: [
       'Trans fat',
       'Saturated animal fat',
