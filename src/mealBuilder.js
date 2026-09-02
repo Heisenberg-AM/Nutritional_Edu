@@ -11,14 +11,14 @@ class MealBuilderController {
     this.foodBadgesContainer = null;
     this.scoreCardOverlay = null;
     
-    // Nutrition bars
-    this.barCalories = null;
-    this.barCarbs = null;
-    this.barProtein = null;
-    this.barVitamins = null;
-    this.barSugar = null;
+    // Nutrition & 50-25-25 Proportion bars
+    this.barVitamins = null; // 50% Fruits & Vegetables
+    this.barCarbs = null;    // 25% Carbohydrates (Whole Grains)
+    this.barProtein = null;  // 25% Protein
+    this.barCalories = null; // Total energy
+    this.barSugar = null;    // Sugar limit
 
-    // Shelf item toggle buttons (for keyboard/chromebook accessibility)
+    // Shelf item toggle buttons
     this.shelfButtonsContainer = null;
   }
 
@@ -28,10 +28,10 @@ class MealBuilderController {
     this.scoreCardOverlay = document.getElementById('meal-score-overlay');
 
     // Bind progress bars
-    this.barCalories = document.getElementById('meter-calories');
+    this.barVitamins = document.getElementById('meter-vitamins');
     this.barCarbs = document.getElementById('meter-carbs');
     this.barProtein = document.getElementById('meter-protein');
-    this.barVitamins = document.getElementById('meter-vitamins');
+    this.barCalories = document.getElementById('meter-calories');
     this.barSugar = document.getElementById('meter-sugar');
 
     this.shelfButtonsContainer = document.getElementById('builder-shelves-list');
@@ -60,7 +60,7 @@ class MealBuilderController {
     this.scoreCardOverlay.classList.add('hidden');
     scene.setView('meal-builder');
 
-    // Build sidebar list of shelf controls for double accessibility
+    // Build sidebar list of shelf controls
     this.renderShelfControls();
     this.updateUI();
   }
@@ -123,7 +123,7 @@ class MealBuilderController {
     // 2. Render plate item badges
     this.foodBadgesContainer.innerHTML = '';
     if (this.selectedIds.length === 0) {
-      this.foodBadgesContainer.innerHTML = '<span class="empty-plate-text">Plate is empty. Add foods from shelves!</span>';
+      this.foodBadgesContainer.innerHTML = '<span class="empty-plate-text">Plate is empty. Click items from shelves to build your 50–25–25 plate!</span>';
     } else {
       this.selectedIds.forEach(id => {
         const item = foodItems[id];
@@ -132,7 +132,7 @@ class MealBuilderController {
         badge.style.borderLeft = `4px solid ${item.color}`;
         badge.innerHTML = `
           <span>${item.name}</span>
-          <button class="badge-remove-btn">&times;</button>
+          <button class="badge-remove-btn" title="Remove from plate">&times;</button>
         `;
         badge.querySelector('.badge-remove-btn').onclick = () => {
           audio.playClick();
@@ -142,89 +142,65 @@ class MealBuilderController {
       });
     }
 
-    // 3. Compute real-time values for meters
+    // 3. Compute real-time values for meters based on 50-25-25 model
     const analysis = evaluateMeal(this.selectedIds);
     this.updateMeters(analysis);
   }
 
   updateMeters(analysis) {
     const nut = analysis.nutrients;
+    const b = analysis.breakdown;
 
-    // Helper to set meter fill width and label
-    const setMeter = (bar, fillEl, currentVal, maxVal, unit) => {
-      const pct = Math.min(100, (currentVal / maxVal) * 100);
-      fillEl.style.width = `${pct}%`;
-      bar.querySelector('.meter-val').textContent = `${currentVal}${unit}`;
+    // 1. 50% Fruits & Vegetables Meter (Target: 2 items = 100%)
+    const pctProduce = Math.min(100, (b.vegFruit / 2) * 100);
+    const fillProduce = this.barVitamins.querySelector('.meter-fill');
+    fillProduce.style.width = `${pctProduce}%`;
+    this.barVitamins.querySelector('.meter-val').textContent = `${b.vegFruit} / 2 Servings`;
+    if (pctProduce >= 100) fillProduce.style.backgroundColor = '#22c55e';
+    else if (pctProduce > 0) fillProduce.style.backgroundColor = '#f59e0b';
+    else fillProduce.style.backgroundColor = '#ef4444';
 
-      // Color coding
-      if (pct > 90 && pct <= 110) {
-        fillEl.style.backgroundColor = '#34c759'; // green (perfect target)
-      } else if (pct > 110) {
-        fillEl.style.backgroundColor = '#ff3b30'; // red (over limit)
-      } else {
-        fillEl.style.backgroundColor = '#ff9500'; // orange (building up)
-      }
-    };
+    // 2. 25% Carbohydrates Meter (Target: 1 whole grain serving = 100%)
+    const pctCarbs = Math.min(100, (b.carbs / 1) * 100);
+    const fillCarbs = this.barCarbs.querySelector('.meter-fill');
+    fillCarbs.style.width = `${pctCarbs}%`;
+    this.barCarbs.querySelector('.meter-val').textContent = `${b.carbs} / 1 Serving`;
+    if (b.carbs === 1) fillCarbs.style.backgroundColor = '#22c55e';
+    else if (b.carbs > 1) fillCarbs.style.backgroundColor = '#f59e0b';
+    else fillCarbs.style.backgroundColor = '#ef4444';
 
-    // Limits based on a single ideal lunch meal (approx 1/3 of daily values)
-    // Calories: Target ~700
-    // Carbs: Target ~80g
-    // Protein: Target ~20g
-    // Vitamins: Calculated based on number of fruits/veg (target 2 items = 100%)
-    // Sugar: Max limit ~18g
-    
-    // Count fruits and vegetables
-    let vegCount = 0;
-    this.selectedIds.forEach(id => {
-      const item = foodItems[id];
-      if (item && (item.group === 'fruit' || item.group === 'vegetable')) {
-        vegCount++;
-      }
-    });
+    // 3. 25% Protein Meter (Target: 1-2 protein servings = 100%)
+    const pctProtein = Math.min(100, (b.protein / 1) * 100);
+    const fillProtein = this.barProtein.querySelector('.meter-fill');
+    fillProtein.style.width = `${pctProtein}%`;
+    this.barProtein.querySelector('.meter-val').textContent = `${b.protein} / 1-2 Servings`;
+    if (b.protein >= 1 && b.protein <= 2) fillProtein.style.backgroundColor = '#22c55e';
+    else if (b.protein > 2) fillProtein.style.backgroundColor = '#f59e0b';
+    else fillProtein.style.backgroundColor = '#ef4444';
 
+    // 4. Calories Meter (Target ~400-600 kcal for a balanced student meal)
     const currentCalories = nut.calories || 0;
-    const currentCarbs = parseFloat(nut.carbs) || 0;
-    const currentProtein = parseFloat(nut.protein) || 0;
-    const currentSugar = parseFloat(nut.sugar) || 0;
-
-    // 1. Calories
-    const pctCal = Math.min(100, (currentCalories / 700) * 100);
-    this.barCalories.querySelector('.meter-fill').style.width = `${pctCal}%`;
+    const pctCal = Math.min(100, (currentCalories / 550) * 100);
+    const fillCal = this.barCalories.querySelector('.meter-fill');
+    fillCal.style.width = `${pctCal}%`;
     this.barCalories.querySelector('.meter-val').textContent = `${currentCalories} kcal`;
+    if (currentCalories >= 350 && currentCalories <= 650) fillCal.style.backgroundColor = '#22c55e';
+    else fillCal.style.backgroundColor = '#f59e0b';
 
-    // 2. Carbs
-    const pctCar = Math.min(100, (currentCarbs / 70) * 100);
-    this.barCarbs.querySelector('.meter-fill').style.width = `${pctCar}%`;
-    this.barCarbs.querySelector('.meter-val').textContent = `${currentCarbs}g`;
-
-    // 3. Protein
-    const pctPro = Math.min(100, (currentProtein / 22) * 100);
-    this.barProtein.querySelector('.meter-fill').style.width = `${pctPro}%`;
-    this.barProtein.querySelector('.meter-val').textContent = `${currentProtein}g`;
-
-    // 4. Fruits & Vegetables (Vitamins Meter)
-    const pctVit = Math.min(100, (vegCount / 2) * 100);
-    const fillVit = this.barVitamins.querySelector('.meter-fill');
-    fillVit.style.width = `${pctVit}%`;
-    this.barVitamins.querySelector('.meter-val').textContent = `${vegCount} / 2 Servings`;
-    if (pctVit >= 100) fillVit.style.backgroundColor = '#34c759';
-    else if (pctVit > 0) fillVit.style.backgroundColor = '#ff9500';
-    else fillVit.style.backgroundColor = '#ff3b30';
-
-    // 5. Sugar (Warning meter, lower is better)
-    const pctSug = Math.min(100, (currentSugar / 20) * 100);
+    // 5. Added Sugar (Warning meter, lower is better)
+    const currentSugar = parseFloat(nut.sugar) || 0;
+    const pctSug = Math.min(100, (currentSugar / 25) * 100);
     const fillSug = this.barSugar.querySelector('.meter-fill');
     fillSug.style.width = `${pctSug}%`;
     this.barSugar.querySelector('.meter-val').textContent = `${currentSugar}g`;
-    if (pctSug > 100) fillSug.style.backgroundColor = '#ff3b30'; // over limit
-    else if (pctSug > 60) fillSug.style.backgroundColor = '#ff9500'; // caution
-    else fillSug.style.backgroundColor = '#34c759'; // great low sugar
+    if (pctSug > 80) fillSug.style.backgroundColor = '#ef4444';
+    else if (pctSug > 50) fillSug.style.backgroundColor = '#f59e0b';
+    else fillSug.style.backgroundColor = '#22c55e';
   }
 
   showScore() {
     const analysis = evaluateMeal(this.selectedIds);
 
-    // Build popup content
     const scoreTitle = document.getElementById('score-grade');
     const scoreSummary = document.getElementById('score-summary');
     const scoreList = document.getElementById('score-tips');
@@ -235,7 +211,6 @@ class MealBuilderController {
     scorePoints.textContent = `Score: ${analysis.score}/100`;
     scoreSummary.textContent = analysis.summary;
 
-    // Build tips list
     scoreList.innerHTML = '';
     analysis.tips.forEach(tip => {
       const li = document.createElement('li');
@@ -253,7 +228,6 @@ class MealBuilderController {
   }
 
   reset() {
-    // Clear plate in scene and arrays
     [...this.selectedIds].forEach(id => {
       scene.toggleFoodOnPlate(id);
     });

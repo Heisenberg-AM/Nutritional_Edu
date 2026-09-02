@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PlatePower 3D: An interactive 3D nutritional awareness experience for 8th-grade students. Learn food groups, USDA MyPlate guidelines, and build balanced meals.">
-  <title>PlatePower 3D - Interactive Nutritional Learning Experience</title>
+  <meta name="description" content="PlatePower 3D: An interactive 3D nutritional awareness experience for students based on the 50–25–25 Healthy Plate Model (50% Vegetables & Fruits, 25% Carbohydrates, 25% Protein).">
+  <title>PlatePower 3D - 50–25–25 Interactive Nutritional Experience</title>
   <link rel="stylesheet" href="/src/style.css">
   <!-- SEO Favicon/Icon placeholder (school safe) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22 width=%22100%22 height=%22100%22><text y=%220.9em%22 font-size=%2290%22>🥗</text></svg>">
@@ -35,7 +35,7 @@
       <nav aria-label="Main Navigation">
         <button id="tab-landing-btn" class="nav-btn active" aria-controls="screen-landing">3D Food Library</button>
         <button id="tab-quiz-btn" class="nav-btn" aria-controls="screen-quiz">Nutrition Quiz</button>
-        <button id="tab-builder-btn" class="nav-btn" aria-controls="screen-builder">Balanced Meal Builder</button>
+        <button id="tab-builder-btn" class="nav-btn" aria-controls="screen-builder">50–25–25 Meal Builder</button>
       </nav>
     </header>
 
@@ -50,10 +50,10 @@
     <main id="screen-landing" class="overlay-screen">
       <section class="interactive-panel hero-card" aria-labelledby="welcome-title">
         <h2 id="welcome-title">PlatePower 3D</h2>
-        <p>Explore nutrition in 3D! Click and rotate the plate to examine different foods, or jump straight into our interactive activities below.</p>
+        <p>Explore nutrition in 3D with the <strong>50–25–25 Healthy Plate Model</strong>! Rotate the plate to inspect foods, test your skills in the quiz, or build a perfectly balanced meal.</p>
         <div class="hero-actions">
           <button id="start-builder-hero" class="btn-primary">
-            <span>🍽️ Build a Meal</span>
+            <span>🍽️ Build a 50–25–25 Meal</span>
           </button>
           <button id="start-quiz-hero" class="btn-secondary">
             <span>✏️ Take the Quiz</span>
@@ -67,7 +67,7 @@
       <!-- Food Nutrition Facts Modal Popup -->
       <section id="food-card-modal" class="interactive-panel food-detail-card hidden" aria-labelledby="card-title">
         <div class="card-header">
-          <h3 id="card-title">Apple</h3>
+          <h3 id="card-title">Red Apple</h3>
           <button id="card-close-btn" class="close-btn" aria-label="Close food information card">&times;</button>
         </div>
         <span id="card-group-tag" class="group-tag tag-fruit">Fruit</span>
@@ -123,7 +123,7 @@
         <div class="quiz-progress-wrapper">
           <div class="quiz-progress-text">
             <span id="quiz-progress-text">Question 1 of 10</span>
-            <span>Grade 8 Nutrition</span>
+            <span>50–25–25 Nutrition Quiz</span>
           </div>
           <div class="quiz-progress-bg">
             <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
@@ -131,7 +131,7 @@
         </div>
 
         <div class="quiz-question-container">
-          <h3 id="quiz-question">Which vitamin, found in abundance in orange carrots, is essential for healthy eyes?</h3>
+          <h3 id="quiz-question">Which portion of your plate should consist of colorful vegetables and fruits?</h3>
           <div id="quiz-options" class="quiz-options-grid">
             <!-- Dynamically populated options buttons -->
           </div>
@@ -155,7 +155,7 @@
         </div>
         <h3>Quiz Completed!</h3>
         <div id="results-score" class="results-score-badge">8 / 10</div>
-        <p class="results-text">Fantastic! You have a great grasp of healthy eating principles.</p>
+        <p class="results-text">Fantastic! You have a great grasp of the 50–25–25 plate principles.</p>
         <button id="quiz-restart-btn" class="btn-primary">Try Again</button>
       </section>
     </main>
@@ -165,7 +165,7 @@
       <!-- Left Panel: List of foods to toggle -->
       <section class="interactive-panel builder-sidebar-shelf" aria-labelledby="shelf-title">
         <h2 id="shelf-title" class="panel-title">Food Shelves</h2>
-        <p class="panel-desc">Click foods below (or click their 3D models) to add/remove them from the central plate.</p>
+        <p class="panel-desc">Click foods below (or click their 3D models) to add/remove them from your 50–25–25 plate.</p>
         <div id="builder-shelves-list" class="shelf-items-list">
           <!-- Shelf toggle items will be injected here -->
         </div>
@@ -173,56 +173,56 @@
 
       <!-- Bottom HUD: Badges listing active items on plate -->
       <section class="interactive-panel builder-plate-list" aria-labelledby="plate-list-title">
-        <h3 id="plate-list-title" class="panel-title">Your Food Plate</h3>
+        <h3 id="plate-list-title" class="panel-title">Your 50–25–25 Plate</h3>
         <div id="builder-badges" class="badges-container">
-          <span class="empty-plate-text">Plate is empty. Add foods from shelves!</span>
+          <span class="empty-plate-text">Plate is empty. Click items from shelves!</span>
         </div>
       </section>
 
       <!-- Right Panel: Real-time nutritional meters and submit -->
       <section class="interactive-panel builder-dashboard" aria-labelledby="meters-title">
-        <h2 id="meters-title" class="panel-title">Meal Balance</h2>
-        <p class="panel-desc">Real-time nutrients relative to an ideal single meal (Lunch):</p>
+        <h2 id="meters-title" class="panel-title">50–25–25 Balance</h2>
+        <p class="panel-desc">Real-time proportions for a balanced lunch plate:</p>
         
         <div class="meters-list">
-          <!-- 1. Calories -->
+          <!-- 1. Fruits & Vegetables (50% of plate) -->
+          <div id="meter-vitamins" class="meter-row">
+            <div class="meter-header">
+              <span class="meter-label">🥦 50% Fruits & Veggies</span>
+              <span class="meter-val">0 / 2 Servings</span>
+            </div>
+            <div class="meter-bg">
+              <div class="meter-fill"></div>
+            </div>
+          </div>
+
+          <!-- 2. Complex Carbohydrates (25% of plate) -->
+          <div id="meter-carbs" class="meter-row">
+            <div class="meter-header">
+              <span class="meter-label">🫓 25% Carbohydrates (Grains)</span>
+              <span class="meter-val">0 / 1 Serving</span>
+            </div>
+            <div class="meter-bg">
+              <div class="meter-fill"></div>
+            </div>
+          </div>
+
+          <!-- 3. Healthy Proteins (25% of plate) -->
+          <div id="meter-protein" class="meter-row">
+            <div class="meter-header">
+              <span class="meter-label">🍳 25% Healthy Proteins</span>
+              <span class="meter-val">0 / 1-2 Servings</span>
+            </div>
+            <div class="meter-bg">
+              <div class="meter-fill"></div>
+            </div>
+          </div>
+
+          <!-- 4. Total Calories -->
           <div id="meter-calories" class="meter-row">
             <div class="meter-header">
               <span class="meter-label">🔥 Total Calories</span>
               <span class="meter-val">0 kcal</span>
-            </div>
-            <div class="meter-bg">
-              <div class="meter-fill"></div>
-            </div>
-          </div>
-          
-          <!-- 2. Carbohydrates -->
-          <div id="meter-carbs" class="meter-row">
-            <div class="meter-header">
-              <span class="meter-label">🍞 Carbs (Energy)</span>
-              <span class="meter-val">0g</span>
-            </div>
-            <div class="meter-bg">
-              <div class="meter-fill"></div>
-            </div>
-          </div>
-
-          <!-- 3. Protein -->
-          <div id="meter-protein" class="meter-row">
-            <div class="meter-header">
-              <span class="meter-label">💪 Protein (Build Muscle)</span>
-              <span class="meter-val">0g</span>
-            </div>
-            <div class="meter-bg">
-              <div class="meter-fill"></div>
-            </div>
-          </div>
-
-          <!-- 4. Fruits/Veg servings -->
-          <div id="meter-vitamins" class="meter-row">
-            <div class="meter-header">
-              <span class="meter-label">🥦 Fruits & Veg (Vitamins)</span>
-              <span class="meter-val">0 Servings</span>
             </div>
             <div class="meter-bg">
               <div class="meter-fill"></div>
@@ -252,18 +252,17 @@
         <div class="score-modal-header">
           <div class="score-title-wrapper">
             <span class="score-label">Nutritionist Grade</span>
-            <h2 id="score-grade" class="score-grade">Perfect Balance! A+</h2>
+            <h2 id="score-grade" class="score-grade">Perfect 50–25–25 Balance! A+</h2>
             <span id="score-number" class="score-badge-number">Score: 95/100</span>
           </div>
           <button id="score-close-btn" class="close-btn" aria-label="Close nutritionist scorecard">&times;</button>
         </div>
         
-        <p id="score-summary" class="score-summary">Great job! This is a very healthy and balanced meal containing all major food groups.</p>
+        <p id="score-summary" class="score-summary">Great job! This is a balanced meal fulfilling the 50–25–25 model (50% Vegetables & Fruits, 25% Whole Grains, 25% Protein).</p>
         
         <h3 class="score-section-title">Tips for Improvement:</h3>
         <ul id="score-tips" class="score-tips-list">
-          <li>Try swaping steak for salmon to get healthy Omega-3 fats.</li>
-          <li>Make sure to include a serving of dairy for Calcium!</li>
+          <li>Include leafy greens and a rich protein like Dal, Paneer, Egg, or Fish to hit the 50–25–25 target!</li>
         </ul>
       </section>
     </main>

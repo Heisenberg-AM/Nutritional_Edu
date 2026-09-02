@@ -1,12 +1,13 @@
-// Nutrition data and quiz questions for the 3D Nutritional Awareness app
+// Nutrition data, 50-25-25 Healthy Plate evaluation, and localized quiz questions
 
 export const foodItems = {
   apple: {
     id: 'apple',
-    name: 'Apple',
+    name: 'Red Apple',
     group: 'fruit',
-    color: '#ff2d55',
-    tagline: 'An apple a day keeps the doctor away!',
+    plateSection: '50% Fruits & Vegetables',
+    color: '#e11d48', // Vibrant ruby red
+    tagline: 'Rich in pectin fiber and Vitamin C for immunity!',
     nutrients: {
       calories: 95,
       carbs: '25g',
@@ -18,17 +19,18 @@ export const foodItems = {
       sodium: '2mg'
     },
     funFacts: [
-      'Apples are made of 25% air, which is why they float in water!',
-      'There are over 7,500 varieties of apples grown worldwide.',
-      'Apples are rich in fiber and Vitamin C, which help your digestion and immune system.'
+      'Apples are 25% air, which is why they float in water!',
+      'Eating whole apples with the peel provides soluble pectin fiber, keeping your digestion smooth.',
+      'Apples have a low glycemic index, giving steady energy without blood sugar spikes.'
     ]
   },
   banana: {
     id: 'banana',
-    name: 'Banana',
+    name: 'Kerala Banana (Nendran)',
     group: 'fruit',
+    plateSection: '50% Fruits & Vegetables',
     color: '#ffd60a',
-    tagline: 'Nature\'s pre-packaged energy bar!',
+    tagline: 'Powerhouse of potassium and instant natural energy!',
     nutrients: {
       calories: 105,
       carbs: '27g',
@@ -40,39 +42,18 @@ export const foodItems = {
       sodium: '1mg'
     },
     funFacts: [
-      'Bananas are technically berries, while strawberry plants are not!',
-      'They are rich in Potassium, which helps your muscles contract and keeps your heart beating healthy.',
-      'Bananas are naturally radioactive because they contain high levels of Potassium (but totally safe to eat!).'
-    ]
-  },
-  broccoli: {
-    id: 'broccoli',
-    name: 'Broccoli',
-    group: 'vegetable',
-    color: '#34c759',
-    tagline: 'Tiny trees packed with big power!',
-    nutrients: {
-      calories: 31,
-      carbs: '6g',
-      fiber: '2.4g',
-      vitamins: 'Vitamin C, Vitamin K, Folate',
-      protein: '2.5g',
-      fat: '0.4g',
-      sugar: '1.5g',
-      sodium: '30mg'
-    },
-    funFacts: [
-      'One cup of broccoli contains as much Vitamin C as an entire orange!',
-      'Broccoli belongs to the cabbage family, along with kale, Brussels sprouts, and cauliflower.',
-      'Vitamin K in broccoli is essential for blood clotting and building strong bones.'
+      'Kerala Nendran bananas are prized for high prebiotic fiber and essential minerals!',
+      'Potassium in bananas helps regulate blood pressure, prevents muscle cramps, and supports heart rhythm.',
+      'Bananas contain Vitamin B6, which helps your body produce serotonin for better focus and mood.'
     ]
   },
   carrot: {
     id: 'carrot',
-    name: 'Carrot',
+    name: 'Orange Carrot',
     group: 'vegetable',
-    color: '#ff9500',
-    tagline: 'Supercharge your eyesight!',
+    plateSection: '50% Fruits & Vegetables',
+    color: '#ff6b00', // Pure bright vivid orange
+    tagline: 'Supercharged with Beta-Carotene & Vitamin A for sharp eyesight!',
     nutrients: {
       calories: 41,
       carbs: '10g',
@@ -84,119 +65,147 @@ export const foodItems = {
       sodium: '69mg'
     },
     funFacts: [
-      'Carrots were originally purple or yellow, not orange!',
-      'They are rich in Beta-carotene, which your body turns into Vitamin A, crucial for night vision.',
-      'Cooking carrots actually releases more of their nutrients for your body to absorb!'
+      'The vivid orange color comes from Beta-carotene, which your liver converts into Vitamin A.',
+      'Vitamin A is critical for protecting the cornea and enabling vision in low light/night conditions.',
+      'Eating carrots with a little healthy fat (like in dal or curry) boosts Vitamin A absorption by 300%!'
     ]
   },
-  bread: {
-    id: 'bread',
-    name: 'Whole Wheat Bread',
+  greens: {
+    id: 'greens',
+    name: 'Palak / Leafy Greens',
+    group: 'vegetable',
+    plateSection: '50% Fruits & Vegetables',
+    color: '#16a34a',
+    tagline: 'Iron and folate champion for healthy blood and stamina!',
+    nutrients: {
+      calories: 23,
+      carbs: '3.6g',
+      fiber: '2.2g',
+      vitamins: 'Iron, Folate, Vitamin K, Vitamin C',
+      protein: '2.9g',
+      fat: '0.4g',
+      sugar: '0.4g',
+      sodium: '79mg'
+    },
+    funFacts: [
+      'Dark green leafy vegetables like Palak, Cheera, and Moringa are rich in non-heme iron and folate.',
+      'Vitamin K in greens plays a major role in bone density and natural blood clotting.',
+      'Combining greens with Vitamin C (like a squeeze of lemon or tomato) helps your body absorb the iron much faster.'
+    ]
+  },
+  roti: {
+    id: 'roti',
+    name: 'Whole Wheat Roti / Chapati',
     group: 'grain',
-    color: '#a27b5c',
-    tagline: 'Fuel your muscles with complex carbs!',
+    plateSection: '25% Carbohydrates',
+    color: '#d97706',
+    tagline: 'Complex carbohydrates for sustained energy and focus!',
     nutrients: {
-      calories: 70,
-      carbs: '12g',
-      fiber: '2g',
+      calories: 120,
+      carbs: '22g',
+      fiber: '3.5g',
       vitamins: 'B Vitamins, Iron, Magnesium',
-      protein: '3.6g',
-      fat: '0.9g',
-      sugar: '1.4g',
-      sodium: '130mg'
+      protein: '3.8g',
+      fat: '1.5g',
+      sugar: '0.5g',
+      sodium: '110mg'
     },
     funFacts: [
-      'Whole grains use the entire grain seed, keeping all the fiber, vitamins, and minerals intact.',
-      'Carbohydrates in whole wheat are "complex," giving you long-lasting energy instead of a quick sugar spike.',
-      'Bread is one of the oldest human-made foods, dating back over 12,000 years!'
+      'Whole wheat retains the bran, germ, and endosperm, packing 3x more fiber than refined white flour.',
+      'Complex carbohydrates break down slowly into glucose, providing steady fuel for school and sports.',
+      'Whole grain rotis are rich in magnesium, which helps convert the food you eat into cellular energy.'
     ]
   },
-  steak: {
-    id: 'steak',
-    name: 'Beef Steak',
+  egg: {
+    id: 'egg',
+    name: 'Boiled Egg',
     group: 'protein',
-    color: '#c93b2b',
-    tagline: 'Iron and protein for muscle building!',
+    plateSection: '25% Protein',
+    color: '#f59e0b',
+    tagline: 'Gold standard complete protein for muscle building & memory!',
     nutrients: {
-      calories: 250,
-      carbs: '0g',
+      calories: 78,
+      carbs: '0.6g',
       fiber: '0g',
-      vitamins: 'Vitamin B12, Iron, Zinc',
-      protein: '26g',
-      fat: '15g',
-      sugar: '0g',
-      sodium: '60mg'
+      vitamins: 'Choline, Vitamin B12, Vitamin D, Zinc',
+      protein: '6.3g',
+      fat: '5.3g',
+      sugar: '0.6g',
+      sodium: '62mg'
     },
     funFacts: [
-      'Beef provides heme iron, which is the type of iron most easily absorbed by your body.',
-      'Protein contains amino acids, which are the building blocks your body uses to repair muscles after exercise.',
-      'A single serving provides almost 100% of your daily recommended Vitamin B12, which keeps your brain and nerves healthy.'
+      'Eggs contain all 9 essential amino acids in the exact proportions needed by growing teenagers!',
+      'The yolk is rich in Choline, a vital nutrient that powers neurotransmitters in the brain for memory and learning.',
+      'Egg protein has a biological value of 100, meaning almost all of it is usable by your body to repair tissue.'
+    ]
+  },
+  paneer: {
+    id: 'paneer',
+    name: 'Fresh Paneer / Dal',
+    group: 'protein',
+    plateSection: '25% Protein',
+    color: '#fbbf24',
+    tagline: 'Vegetarian protein and calcium powerhouse for strong bones!',
+    nutrients: {
+      calories: 130,
+      carbs: '2.5g',
+      fiber: '0g',
+      vitamins: 'Calcium, Phosphorus, Vitamin B12',
+      protein: '9.0g',
+      fat: '9.5g',
+      sugar: '1.2g',
+      sodium: '85mg'
+    },
+    funFacts: [
+      'Paneer and lentils (Dal) are staple vegetarian protein sources across Indian cuisine.',
+      'Paneer is rich in Calcium and Phosphorus, which work together to harden bone matrix and enamel.',
+      'Combining lentils (Dal) with grains (Rice or Roti) creates a complete protein profile with all essential amino acids!'
     ]
   },
   fish: {
     id: 'fish',
-    name: 'Salmon Fish',
+    name: 'Kerala Fish (Karimeen)',
     group: 'protein',
-    color: '#ff7b7b',
-    tagline: 'Brain food rich in healthy fats!',
+    plateSection: '25% Protein',
+    color: '#0284c7',
+    tagline: 'Lean coastal protein packed with brain-boosting Omega-3s!',
     nutrients: {
-      calories: 206,
+      calories: 140,
       carbs: '0g',
       fiber: '0g',
-      vitamins: 'Omega-3, Vitamin D, Vitamin B6',
-      protein: '22g',
-      fat: '12g',
+      vitamins: 'Omega-3 Fatty Acids, Vitamin D, Selenium',
+      protein: '20g',
+      fat: '6.0g',
       sugar: '0g',
-      sodium: '50mg'
+      sodium: '70mg'
     },
     funFacts: [
-      'Salmon are famous for swimming upstream against strong currents to lay their eggs.',
-      'Salmon are rich in Omega-3 fatty acids, which boost brain power, memory, and heart health.',
-      'It is one of the few natural food sources of Vitamin D, which helps your bones absorb calcium.'
+      'Coastal fish like Karimeen, Sardines (Mathi), and Mackerel (Ayala) are loaded with natural Omega-3 fatty acids.',
+      'Omega-3s form the structural lipids of brain cell membranes, enhancing concentration and cognitive speed.',
+      'Fish is naturally low in saturated fats and provides bioavailable Vitamin D for bone and immune health.'
     ]
   },
-  cheese: {
-    id: 'cheese',
-    name: 'Cheese',
+  curd: {
+    id: 'curd',
+    name: 'Curd / Sambharam (Buttermilk)',
     group: 'dairy',
-    color: '#ffcc00',
-    tagline: 'Calcium punch for strong teeth!',
+    plateSection: 'Accompaniment',
+    color: '#06b6d4',
+    tagline: 'Cooling probiotic for gut health, digestion, and calcium!',
     nutrients: {
-      calories: 110,
-      carbs: '1g',
+      calories: 60,
+      carbs: '4.5g',
       fiber: '0g',
-      vitamins: 'Calcium, Vitamin A, Vitamin B12',
-      protein: '7g',
-      fat: '9g',
-      sugar: '0g',
-      sodium: '180mg'
+      vitamins: 'Probiotics (Lactobacillus), Calcium, Vitamin B2',
+      protein: '4.0g',
+      fat: '2.5g',
+      sugar: '4.0g',
+      sodium: '55mg'
     },
     funFacts: [
-      'It takes about 10 pounds of milk to make just 1 pound of hard cheese!',
-      'Cheese is packed with calcium and phosphorus, which physically rebuild and protect your tooth enamel.',
-      'There are over 2,000 varieties of cheese, and some are aged for several years before eating.'
-    ]
-  },
-  milk: {
-    id: 'milk',
-    name: 'Milk',
-    group: 'dairy',
-    color: '#e5e9f0',
-    tagline: 'The ultimate bone-building drink!',
-    nutrients: {
-      calories: 120,
-      carbs: '12g',
-      fiber: '0g',
-      vitamins: 'Calcium, Vitamin D, Riboflavin',
-      protein: '8g',
-      fat: '5g',
-      sugar: '12g',
-      sodium: '120mg'
-    },
-    funFacts: [
-      'Milk is fortified with Vitamin D because your body needs it to successfully absorb Calcium!',
-      'Dairy farming has been a part of human agriculture for over 9,000 years.',
-      'Drinking milk after a hard workout is one of the best ways to rehydrate and repair muscles!'
+      'Traditional spiced buttermilk (Sambharam with ginger, curry leaves, and green chili) is Kerala’s natural hydrator.',
+      'Curd is packed with live probiotic bacteria (Lactobacillus) that strengthen gut microbiome and digestion.',
+      'Fermentation in curd breaks down lactose, making it easier to digest while delivering rich calcium.'
     ]
   }
 };
@@ -204,147 +213,147 @@ export const foodItems = {
 export const quizQuestions = [
   {
     id: 1,
-    question: 'According to USDA MyPlate guidelines, how much of your plate should consist of fruits and vegetables?',
+    question: 'According to the 50–25–25 Healthy Plate model, what portion of your plate should consist of colorful vegetables and fruits?',
     options: [
       'One quarter (25%)',
       'One half (50%)',
       'Three quarters (75%)',
-      'The entire plate (100%)'
+      'Only 10%'
     ],
     answer: 1,
-    explanation: 'MyPlate guidelines recommend filling half of your plate with a colorful variety of fruits and vegetables to get plenty of fiber, vitamins, and minerals.'
+    explanation: 'The 50–25–25 model recommends filling exactly half (50%) of your plate with vegetables and fruits to ensure adequate intake of dietary fiber, vitamins, and minerals.'
   },
   {
     id: 2,
-    question: 'Which vitamin, found abundantly in carrots, is essential for maintaining healthy eyesight?',
+    question: 'In the 50–25–25 plate framework, what should make up the two remaining 25% quarters of your meal?',
     options: [
-      'Vitamin C',
-      'Vitamin D',
-      'Vitamin A',
-      'Vitamin B12'
+      '25% Sweets and 25% Fried snacks',
+      '25% Complex Carbohydrates (like Roti/Matta Rice) and 25% Healthy Proteins (like Dal/Egg/Fish)',
+      '50% Extra Rice and no protein',
+      '25% Soda and 25% Fast food'
     ],
-    answer: 2,
-    explanation: 'Carrots are rich in Beta-carotene, which your body converts into Vitamin A. Vitamin A is crucial for good night vision and overall eye health.'
+    answer: 1,
+    explanation: 'The remaining plate is divided evenly: 25% for complex carbohydrates (whole grains for steady energy) and 25% for protein (for muscle repair and growth).'
   },
   {
     id: 3,
-    question: 'Which nutrient is considered the body\'s primary and most efficient source of energy?',
+    question: 'Why is traditional Kerala red Matta rice or whole wheat Roti healthier than polished white rice?',
     options: [
-      'Protein',
-      'Carbohydrates',
-      'Saturated Fat',
-      'Calcium'
+      'They contain more sugar',
+      'They retain the outer bran layer rich in fiber, minerals, and B-vitamins, giving slow, steady energy',
+      'They digest in under 5 minutes',
+      'They have zero carbohydrates'
     ],
     answer: 1,
-    explanation: 'Carbohydrates (especially complex carbs like those in whole grains) are broken down into glucose, which is the preferred fuel for your brain and muscles.'
+    explanation: 'Whole grains retain their bran and germ layers, providing high dietary fiber and B-vitamins that prevent sudden blood sugar spikes and keep energy steady.'
   },
   {
     id: 4,
-    question: 'What mineral is essential for building strong bones and teeth, and is found in high amounts in dairy?',
+    question: 'Which nutrient, abundant in orange carrots and mangoes, is essential for maintaining sharp vision in low light?',
     options: [
-      'Iron',
-      'Sodium',
-      'Calcium',
-      'Zinc'
+      'Vitamin C',
+      'Beta-carotene (provitamin A)',
+      'Vitamin D',
+      'Sodium'
     ],
-    answer: 2,
-    explanation: 'Calcium is the key structural mineral in your bones and teeth. Getting enough calcium during your teenage years helps build bone density for life.'
+    answer: 1,
+    explanation: 'Beta-carotene in orange vegetables is converted by your body into Vitamin A, which protects the cornea and supports night vision.'
   },
   {
     id: 5,
-    question: 'Why are whole grains (like whole wheat bread) healthier than refined grains (like white bread)?',
+    question: 'Why is pairing Dal (lentils) with Rice or Roti considered a smart nutritional strategy in Indian meals?',
     options: [
-      'They contain more sugar',
-      'They look darker and taste sweeter',
-      'They keep the fiber, vitamins, and minerals that refining strips away',
-      'They digest much faster'
+      'It makes the food sweeter',
+      'Grains and lentils have complementary amino acids that together form a complete protein',
+      'It removes all fats from the plate',
+      'It replaces the need to drink water'
     ],
-    answer: 2,
-    explanation: 'Whole grains retain all parts of the seed—the bran, germ, and endosperm. This preserves natural fiber and B vitamins, leading to steadier energy levels.'
+    answer: 1,
+    explanation: 'Cereals lack lysine while pulses lack methionine; combining them (like Dal-Roti or Dal-Chawal) provides all 9 essential amino acids for complete protein absorption.'
   },
   {
     id: 6,
-    question: 'Which of these is a healthy fat that helps improve brain function and heart health?',
+    question: 'Which healthy fat found in Kerala coastal fish like Karimeen and Sardines is critical for brain function and memory?',
     options: [
       'Trans fat',
-      'Saturated fat from red meat',
-      'Omega-3 fatty acids, found in salmon',
-      'High-fructose corn syrup'
+      'Saturated animal fat',
+      'Omega-3 fatty acids',
+      'Palm oil'
     ],
     answer: 2,
-    explanation: 'Omega-3 fatty acids are unsaturated fats essential for brain cell structure and reducing inflammation. Salmon and flaxseeds are excellent sources.'
+    explanation: 'Omega-3 fatty acids are essential unsaturated fats that build brain and nerve cell membranes, boosting concentration and memory.'
   },
   {
     id: 7,
-    question: 'What is the main danger of consuming too many beverages with "added sugars" like soda or energy drinks?',
+    question: 'What makes traditional Curd and spiced Buttermilk (Sambharam) beneficial for teenage digestion?',
     options: [
-      'They cause your bones to break easily',
-      'They cause energy crashes, tooth decay, and increase long-term health risks',
-      'They contain too much water, which dilutes nutrients',
-      'They make you sleep too much'
+      'They contain high refined sugar',
+      'They provide live probiotic bacteria (Lactobacillus) and bioavailable calcium for gut and bone health',
+      'They replace vegetables on the plate',
+      'They are artificial soft drinks'
     ],
     answer: 1,
-    explanation: 'Added sugars cause a rapid spike and subsequent crash in blood sugar, leaving you tired. Over time, they lead to cavities and metabolic health issues.'
+    explanation: 'Fermented dairy provides probiotics that support a healthy gut microbiome, smooth digestion, and strong bones through bioavailable calcium.'
   },
   {
     id: 8,
-    question: 'Which nutrient is vital for building, maintaining, and repairing muscles, skin, and organs?',
+    question: 'Dark leafy greens like Palak, Cheera, and Moringa (drumstick leaves) are rich in which vital mineral that transports oxygen in your blood?',
     options: [
+      'Iron',
       'Sodium',
-      'Protein',
-      'Fiber',
-      'Cholesterol'
+      'Potassium',
+      'Chlorine'
     ],
-    answer: 1,
-    explanation: 'Proteins are made of amino acids, which serve as the physical building blocks for growing muscles, repairing tissues, and making hormones.'
+    answer: 0,
+    explanation: 'Green leafy vegetables are packed with iron, which is the core component of hemoglobin needed to carry oxygen to your muscles and brain.'
   },
   {
     id: 9,
-    question: 'If a food label says it has 16 grams of sugar per serving, about how many teaspoons of sugar is that?',
+    question: 'What is the healthiest choice for daily hydration during school and sports activities?',
     options: [
-      '1 teaspoon',
-      '2 teaspoons',
-      '4 teaspoons',
-      '8 teaspoons'
+      'Packaged energy drinks',
+      'Carbonated sugary sodas',
+      'Plain water, tender coconut water, or fresh buttermilk',
+      'Commercial fruit syrup drinks'
     ],
     answer: 2,
-    explanation: 'Every 4 grams of sugar is equal to approximately 1 teaspoon. So, 16 grams of sugar is equivalent to 4 teaspoons of sugar in a single serving!'
+    explanation: 'Plain water, tender coconut, and buttermilk hydrate naturally without added sugars, chemical preservatives, or caffeine crashes.'
   },
   {
     id: 10,
-    question: 'What is sodium, and why should we monitor how much of it we eat?',
+    question: 'If a snack has 20 grams of added sugar per serving, approximately how many teaspoons of sugar is that?',
     options: [
-      'It is a vitamin that helps us grow taller',
-      'It is salt; too much can lead to high blood pressure and strain your heart',
-      'It is a sugar alternative that makes food sour',
-      'It is a metal that gives you energy'
+      '1 teaspoon',
+      '2.5 teaspoons',
+      '5 teaspoons',
+      '10 teaspoons'
     ],
-    answer: 1,
-    explanation: 'Sodium is salt. While our bodies need a tiny amount, eating too much sodium (often hidden in processed foods) raises blood pressure and strains blood vessels.'
+    answer: 2,
+    explanation: 'Every 4 grams of sugar equals approximately 1 teaspoon. 20 grams of added sugar is equal to 5 full teaspoons of sugar in a single serving!'
   },
   {
     id: 11,
-    question: 'What is the role of dietary fiber in the body?',
+    question: 'Which nutrient is the primary building block for growing muscles, repairing tissues, and making hormones during teenage growth?',
     options: [
-      'It builds muscle mass',
-      'It helps with digestion, keeps your gut healthy, and keeps you feeling full',
-      'It transports oxygen in the blood',
-      'It provides instant energy'
+      'Protein',
+      'Saturated fat',
+      'Added sugar',
+      'Cholesterol'
     ],
-    answer: 1,
-    explanation: 'Fiber is a carbohydrate that your body cannot digest. It helps sweep food through your digestive tract, maintains gut health, and slows glucose absorption.'
+    answer: 0,
+    explanation: 'Proteins (found in eggs, paneer, fish, dal, and nuts) break down into amino acids that physically build and repair muscles, organs, and skin.'
   },
   {
     id: 12,
-    question: 'Which of these is the healthiest choice for hydration during a typical school day?',
+    question: 'Why should we be mindful of consuming too many packaged fried snacks and deep-fried fast foods?',
     options: [
-      'Sports drinks with electrolytes',
-      'Fruit juice boxes (100% juice)',
-      'Water',
-      'Diet soda'
+      'They contain too much natural fiber',
+      'They are high in unhealthy saturated/trans fats and sodium, which can strain heart health and cause fatigue',
+      'They have too much Vitamin C',
+      'They cause too much bone growth'
     ],
-    answer: 2,
-    explanation: 'Plain water is the absolute best hydrator. It contains zero sugars, chemical additives, or calories, and keeps every organ functioning at its peak.'
+    answer: 1,
+    explanation: 'Deep-fried foods and ultra-processed snacks are high in oxidized fats and sodium, causing energy crashes and increasing cardiovascular risk.'
   }
 ];
 
@@ -353,9 +362,10 @@ export function evaluateMeal(selectedIds) {
     return {
       score: 0,
       grade: 'Empty Plate',
-      summary: 'You haven\'t added any food to your plate yet!',
-      color: '#e5e9f0',
-      tips: ['Click on some of the 3D food items on the shelves to add them to your plate.'],
+      summary: 'Your plate is currently empty! Add foods from the shelves to build a balanced 50–25–25 meal.',
+      color: '#94a3b8',
+      tips: ['Click items on the shelves to add vegetables, grains, and proteins to your plate.'],
+      breakdown: { vegFruit: 0, carbs: 0, protein: 0, dairy: 0 },
       nutrients: {
         calories: 0,
         carbs: '0g',
@@ -368,15 +378,11 @@ export function evaluateMeal(selectedIds) {
     };
   }
 
-  // Count food groups
-  const groupsCount = {
-    fruit: 0,
-    vegetable: 0,
-    grain: 0,
-    protein: 0,
-    dark_protein: 0, // Steak
-    dairy: 0
-  };
+  // Count items across the 50-25-25 categories
+  let vegFruitCount = 0;
+  let carbsCount = 0;
+  let proteinCount = 0;
+  let dairyCount = 0;
 
   let totalCalories = 0;
   let totalSugar = 0;
@@ -384,13 +390,21 @@ export function evaluateMeal(selectedIds) {
   let totalProtein = 0;
   let totalCarbs = 0;
   let totalFat = 0;
+  let totalFiber = 0;
 
   selectedIds.forEach(id => {
     const item = foodItems[id];
     if (!item) return;
 
-    groupsCount[item.group] = (groupsCount[item.group] || 0) + 1;
-    if (id === 'steak') groupsCount.dark_protein++;
+    if (item.group === 'fruit' || item.group === 'vegetable') {
+      vegFruitCount++;
+    } else if (item.group === 'grain') {
+      carbsCount++;
+    } else if (item.group === 'protein') {
+      proteinCount++;
+    } else if (item.group === 'dairy') {
+      dairyCount++;
+    }
 
     totalCalories += item.nutrients.calories;
     totalSugar += parseFloat(item.nutrients.sugar);
@@ -398,95 +412,84 @@ export function evaluateMeal(selectedIds) {
     totalProtein += parseFloat(item.nutrients.protein);
     totalCarbs += parseFloat(item.nutrients.carbs);
     totalFat += parseFloat(item.nutrients.fat);
+    totalFiber += parseFloat(item.nutrients.fiber || '0');
   });
 
-  // Calculate unique food groups (maximum is 5: fruit, vegetable, grain, protein, dairy)
-  const representedGroups = Object.keys(groupsCount).filter(g => g !== 'dark_protein' && groupsCount[g] > 0);
-  const uniqueGroupsCount = representedGroups.length;
+  const totalItems = selectedIds.length;
+  let score = 50; // base starting score
+  const tips = [];
 
-  let score = 0;
-  let grade = 'Needs Work';
-  let summary = '';
-  let tips = [];
-
-  // Base score on variety
-  score += uniqueGroupsCount * 20; // Up to 100 for 5 groups
-
-  // Deductions & Adjustments
-  if (selectedIds.length > 5) {
-    // Too much food
-    score -= (selectedIds.length - 5) * 5;
-    tips.push('Portion size is a bit large. Try building a meal with 3-5 items to keep calories in check.');
-  }
-
-  // Sugar alert
-  if (totalSugar > 25) {
-    score -= 15;
-    tips.push('This meal contains a lot of sugar! High sugar intake can lead to energy crashes.');
-  }
-
-  // Sodium alert
-  if (totalSodium > 400) {
-    score -= 10;
-    tips.push('Your meal is relatively high in sodium (salt). Try to limit high-sodium processed foods.');
-  }
-
-  // Protein checks
-  if (groupsCount.protein > 2) {
-    score -= 10;
-    tips.push('You have multiple protein sources. Just one serving is usually enough for a balanced meal.');
-  }
-
-  // Steak warning (high saturated fat)
-  if (groupsCount.dark_protein > 0 && totalFat > 15) {
-    tips.push('Beef steak is a great source of iron, but it is high in saturated fat. Balance it with fresh veggies or swap for fish next time!');
-  }
-
-  // Vegetables and Fruits check (MyPlate says 50% plate should be fruit/veg)
-  const fruitAndVegCount = (groupsCount.fruit || 0) + (groupsCount.vegetable || 0);
-  if (fruitAndVegCount === 0) {
+  // Evaluate 50% Fruits & Veg (Target: at least 2 items, representing ~50% of meal)
+  if (vegFruitCount >= 2) {
+    score += 25;
+  } else if (vegFruitCount === 1) {
+    score += 12;
+    tips.push('🌱 Add another vegetable or fruit! The 50–25–25 model recommends filling half your plate with colorful produce.');
+  } else {
     score -= 20;
-    tips.push('CRITICAL: No fruits or vegetables! Remember, half of your plate should be colorful fruits and veggies.');
-  } else if (fruitAndVegCount === 1) {
+    tips.push('⚠️ Missing 50% Produce: Your plate needs vegetables and fruits for fiber, vitamins, and cellular protection.');
+  }
+
+  // Evaluate 25% Carbohydrates (Target: exactly 1 grain item like Roti)
+  if (carbsCount === 1) {
+    score += 15;
+  } else if (carbsCount === 0) {
+    tips.push('🫓 Add a whole grain (like Whole Wheat Roti) to fulfill the 25% complex carbohydrate portion for stamina.');
+  } else if (carbsCount > 1) {
+    score -= 10;
+    tips.push('Grain Portion Alert: Too many carbohydrates on the plate. Stick to 1 grain serving (25% of plate) to keep blood sugar stable.');
+  }
+
+  // Evaluate 25% Protein (Target: 1 or 2 protein items like Dal/Paneer/Egg/Fish)
+  if (proteinCount >= 1 && proteinCount <= 2) {
+    score += 15;
+  } else if (proteinCount === 0) {
+    score -= 15;
+    tips.push('🍳 Missing 25% Protein: Add Paneer, Egg, Dal, or Fish to provide amino acids for muscle growth and repair.');
+  } else if (proteinCount > 2) {
     score -= 5;
-    tips.push('Add another fruit or vegetable. Try to make half of your plate green, orange, or red!');
+    tips.push('Excess Protein: One to two quality protein sources are plenty for a single meal.');
   }
 
-  // Grain check
-  if (groupsCount.grain === 0) {
-    tips.push('Add a grain source (like whole wheat bread) to provide sustained carbohydrate energy.');
+  // Probiotic / Dairy bonus
+  if (dairyCount >= 1) {
+    score += 5;
   }
 
-  // Dairy check
-  if (groupsCount.dairy === 0) {
-    tips.push('Consider adding dairy (milk or cheese) for bone-strengthening Calcium and Vitamin D.');
+  // Portion volume check (ideal 3-4 items)
+  if (totalItems > 5) {
+    score -= (totalItems - 5) * 5;
+    tips.push('Large Portion: Try building a focused meal with 3–4 items to maintain optimal energy without sluggishness.');
   }
 
-  // Clamp score
+  // Clamp score between 10 and 100
   score = Math.max(10, Math.min(100, score));
 
   // Determine Grade
-  let color = '#ff2d55';
+  let grade = 'Needs Adjustment';
+  let summary = '';
+  let color = '#ef4444';
+
   if (score >= 90) {
-    grade = 'Perfect Balance! A+';
-    summary = 'Outstanding! You built a perfectly balanced meal that meets all USDA MyPlate guidelines.';
-    color = '#34c759';
-  } else if (score >= 80) {
-    grade = 'Healthy Choices! B+';
-    summary = 'Great job! This is a very nutritious meal with excellent variety and balance.';
-    color = '#34c759';
-  } else if (score >= 65) {
-    grade = 'Getting Close! C';
-    summary = 'Not bad, but we can make it more balanced. Look at the tips to improve your score.';
-    color = '#ff9500';
+    grade = 'Ideal 50–25–25 Balance! 🌟';
+    summary = 'Outstanding! Your plate aligns with the 50–25–25 Healthy Plate model (50% Vegetables & Fruits, 25% Whole Grains, 25% Protein).';
+    color = '#22c55e';
+  } else if (score >= 75) {
+    grade = 'Very Good Meal! 👍';
+    summary = 'Great job! This is a nutritious meal with good variety. A few small tweaks will make it a textbook 50–25–25 plate.';
+    color = '#10b981';
+  } else if (score >= 60) {
+    grade = 'Fair Start 🥗';
+    summary = 'You have good components, but the plate proportions need adjustment to match the 50% produce and 25% protein targets.';
+    color = '#f59e0b';
   } else {
-    grade = 'Unbalanced Meal! D';
-    summary = 'This meal is lacking variety or contains too much sugar, sodium, or saturated fat. Let\'s adjust it!';
-    color = '#ff3b30';
+    grade = 'Unbalanced Plate ⚠️';
+    summary = 'This meal is missing key food groups or has unbalanced proportions. Follow the 50–25–25 guidelines below!';
+    color = '#ef4444';
   }
 
   if (tips.length === 0) {
-    tips.push('Your meal is super balanced! Try swapping different items to see how it affects your nutrients.');
+    tips.push('Your meal has a 50–25–25 balance! Try switching up different vegetables and proteins across days.');
   }
 
   return {
@@ -495,25 +498,20 @@ export function evaluateMeal(selectedIds) {
     summary,
     color,
     tips,
+    breakdown: {
+      vegFruit: vegFruitCount,
+      carbs: carbsCount,
+      protein: proteinCount,
+      dairy: dairyCount
+    },
     nutrients: {
       calories: Math.round(totalCalories),
       carbs: Math.round(totalCarbs) + 'g',
-      fiber: totalFiberCount(selectedIds),
+      fiber: totalFiber.toFixed(1) + 'g',
       protein: Math.round(totalProtein) + 'g',
       fat: Math.round(totalFat) + 'g',
       sugar: Math.round(totalSugar) + 'g',
       sodium: Math.round(totalSodium) + 'mg'
     }
   };
-}
-
-function totalFiberCount(ids) {
-  let count = 0;
-  ids.forEach(id => {
-    const item = foodItems[id];
-    if (item && item.nutrients.fiber) {
-      count += parseFloat(item.nutrients.fiber);
-    }
-  });
-  return count.toFixed(1) + 'g';
 }

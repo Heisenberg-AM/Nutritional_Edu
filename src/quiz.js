@@ -243,7 +243,7 @@ class QuizController {
       msg = "Nutritional Masterclass! Perfect Score! You know exactly how to fuel your body.";
       emoji = '🥇';
     } else if (this.score >= 8) {
-      msg = "Excellent job! You have a solid understanding of healthy eating habits and MyPlate guidelines.";
+      msg = "Excellent job! You have a solid understanding of healthy eating habits and the 50–25–25 Healthy Plate model.";
       emoji = '🌟';
     } else if (this.score >= 6) {
       msg = "Good effort! You know a lot, but could review some areas to improve your daily food choices.";
