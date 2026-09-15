@@ -61,4 +61,4 @@ npm run build
 ```
 The production assets will be output to the `/dist` directory.
 
-To access the website link online [CLick Here]([url](https://heisenberg-am.github.io/Nutritional_Edu/))
+To access the website link online [Click Here]([https://heisenberg-am.github.io/Nutritional_Edu/])
